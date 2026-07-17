@@ -1,0 +1,712 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOVERNMENT PG COLLEGE, THANAGAZI (ALWAR)</title>
+    <style>
+        :root {
+            --bg-body: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --accent-gold: #d4af37;
+            --border-round: 12px;
+        }
+
+        body.dark-theme {
+            --bg-body: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Premium Official Header */
+        .premium-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 45px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .premium-header h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .premium-header p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            margin-top: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+
+        .container {
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Search Component Style */
+        .search-container {
+            background: var(--card-bg);
+            padding: 22px;
+            border-radius: var(--border-round);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        body.dark-theme .search-container { border-color: #334155; }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 50px 16px 22px;
+            font-size: 1.15rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background: var(--card-bg);
+            color: var(--text-main);
+        }
+        body.dark-theme .search-input { border-color: #475569; }
+
+        .search-input:focus {
+            border-color: #1e40af;
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.15);
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 20px;
+            font-size: 1.4rem;
+            color: #94a3b8;
+            cursor: pointer;
+            display: none;
+            user-select: none;
+        }
+
+        /* Dynamic Ribbon Palette */
+        .subject-block {
+            background: var(--card-bg);
+            border-radius: var(--border-round);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+            margin-bottom: 35px;
+            overflow: hidden;
+        }
+        body.dark-theme .subject-block { border-color: #334155; }
+
+        .subject-header {
+            padding: 20px 25px;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .block-eco .subject-header { background: linear-gradient(90deg, #1e3a8a, #3b82f6); border-bottom: 4px solid #10b981; }
+        .block-geo .subject-header { background: linear-gradient(90deg, #0f766e, #14b8a6); border-bottom: 4px solid #f59e0b; }
+        .block-pol .subject-header { background: linear-gradient(90deg, #1e1b4b, #6366f1); border-bottom: 4px solid #ec4899; }
+        .block-hin .subject-header { background: linear-gradient(90deg, #7c2d12, #f97316); border-bottom: 4px solid #3b82f6; }
+        .block-san .subject-header { background: linear-gradient(90deg, #4c1d95, #a855f7); border-bottom: 4px solid #eab308; }
+        .block-his .subject-header { background: linear-gradient(90deg, #115e59, #047857); border-bottom: 4px solid #ef4444; }
+
+        .subject-body { padding: 30px; }
+
+        .paper-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            padding: 12px 18px;
+            background: #f8fafc;
+            border-left: 6px solid #475569;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+        }
+        body.dark-theme .paper-title { background: #334155; border-left-color: var(--accent-gold); }
+
+        .unit-row {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        body.dark-theme .unit-row { border-bottom-color: #334155; }
+        .unit-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .unit-title { font-size: 1.1rem; font-weight: 700; color: #c2410c; margin-bottom: 8px; }
+        body.dark-theme .unit-title { color: #ff7a00; }
+        .unit-content { font-size: 1.05rem; text-align: justify; color: var(--text-main); opacity: 0.9; }
+
+        .practical-box {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-left: 6px solid #334155;
+            padding: 22px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        body.dark-theme .practical-box { background: #1e293b; border-color: #475569; border-left-color: #14b8a6; }
+
+        .practical-header {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+        }
+
+        /* Fixed Pop-up Modal Banner */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            max-width: 520px;
+            width: 92%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+            border-top: 8px solid #25d366;
+        }
+
+        .modal-card h3 { font-size: 1.45rem; color: #0f172a; margin-bottom: 12px; font-weight: 800; }
+        .modal-card p { font-size: 1.05rem; color: #475569; margin-bottom: 25px; }
+
+        .btn-whatsapp-group {
+            display: block;
+            background-color: #25d366;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-already-joined {
+            display: block;
+            width: 100%;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 12px 20px;
+            border: 2px solid #cbd5e1;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Mystic Lyric Footer Design */
+        .mystic-footer {
+            background-color: #0f172a;
+            color: var(--accent-gold);
+            padding: 45px 20px;
+            text-align: center;
+            border-top: 4px solid var(--accent-gold);
+            margin-top: 60px;
+        }
+
+        .mystic-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        /* Float Action Group (WhatsApp & Top) */
+        .float-actions {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .btn-float {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+            border: none;
+            transition: transform 0.2s;
+        }
+        .btn-float:hover { transform: scale(1.08); }
+
+        /* Accurate Official SVG Vector WhatsApp Icon */
+        .whatsapp-personal {
+            background-color: #25d366;
+            padding: 11px;
+            cursor: pointer;
+        }
+
+        .whatsapp-personal svg {
+            width: 100%;
+            height: 100%;
+            fill: #ffffff;
+        }
+
+        .back-to-top {
+            background: #1e40af;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: none;
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Double Choice Notification Popup Modal -->
+    <div id="groupModal" class="modal-overlay">
+        <div class="modal-card">
+            <h3>📢 छात्र सूचना पोर्टल</h3>
+            <p>चतुर्थ सेमेस्टर की लाइव कक्षाओं, परीक्षा से संबंधित महत्वपूर्ण प्रश्नों, और प्रतिदिन के क्लास नोट्स हेतु हमारे ऑफिशियल व्हाट्सएप ग्रुप से जुड़ें।</p>
+            <a href="https://chat.whatsapp.com/KAiJ0wBP7Yg18Fu3wmsQj7?s=cl&p=a&mlu=0&ilr=0" target="_blank" class="btn-whatsapp-group" onclick="closeModal()">🟢 अभी ग्रुप जॉइन करें</a>
+            <button class="btn-already-joined" onclick="closeModal()">मैंने पहले से जॉइन कर रखा है (पाठ्यक्रम देखें)</button>
+        </div>
+    </div>
+
+    <header class="premium-header">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 डार्क मोड</button>
+        <h1>GOVERNMENT PG COLLEGE, THANAGAZI (ALWAR)</h1>
+        <p>स्नातक कला संकाय (बी.ए. चतुर्थ सेमेस्टर) — संपूर्ण प्रामाणिक पाठ्यक्रम</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Search Component -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="globalSearch" class="search-input" placeholder="🔍 विषय कोड खोजें (जैसे: GEO, ECO, POL, SANS, HIN, HIS)...">
+                <span id="clearBtn" class="clear-search" onclick="clearSearchInput()">×</span>
+            </div>
+        </div>
+
+        <div id="rootSubjectContainer">
+            
+            <!-- 1. ECONOMICS -->
+            <div class="subject-block block-eco" data-search-keys="eco economics arthshastra अर्थशास्त्र सांख्यिकी">
+                <div class="subject-header"><b>ECONOMICS</b></div>
+                <div class="subject-body">
+                    <div class="paper-title">विकल्प A: सांख्यिकी (STATISTICS) [Paper Code: UG9101-ECO-64T-203(A)]</div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - I</div>
+                        <div class="unit-content">सांख्यिकी की प्रकृति, क्षेत्र, महत्व और सीमाएँ। समंकों (Data) के प्रकार: प्राथमिक और द्वितीयक समंक, समंक संग्रह की प्रमुख विधियाँ। समंकों का वर्गीकरण और सारणीकरण (Tabulation)। समंकों का चित्रमय और आरेखीय प्रस्तुतीकरण: दंड आरेख, आयत चित्र (Histogram), आवृत्ति बहुभुज और संचयी आवृत्ति वक्र (ओजाइव)। केंद्रीय प्रवृत्ति के माप: अंकगणितीय माध्य (Arithmetic Mean), ज्यामितीय माध्य (Geometric Mean), हरात्मक माध्य (Harmonic Mean), बहुलक (Mode), माध्यिका (Median) और विभाजन मान (क्वाटाइल, डेसाइल, परसेंटाइल)।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - II</div>
+                        <div class="unit-content">अपकिरण (Dispersion) की अवधारणा और इसके विभिन्न माप: विस्तार (Range), चतुर्थक विचलन (Quartile Deviation), माध्य विचलन (Mean Deviation), और मानक विचलन (Standard Deviation)। विषमता (Skewness) की अवधारणा, कार्ल पीयरसन और बाउले के विषमता गुणांक। सरल सहसंबंध (Simple Correlation): कार्ल पीयरसन का सहसंबंध गुणांक और स्पीयरमैन का कोटि (Rank) सहसंबंध गुणांक। प्रतिगमन विश्लेषण (Regression Analysis): न्यूनतम वर्ग विधि (Least Square Method) द्वारा दो चरों के मध्य रैखिक प्रतिगमन रेखाओं का निर्धारण और प्रतिगमन गुणांक।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - III</div>
+                        <div class="unit-content">काल श्रेणी का विश्लेषण (Analysis of Time Series): काल श्रेणी के विभिन्न घटक, सीधी रेखा प्रवृत्ति समीकरण ($Y = a + bX$) द्वारा प्रवृत्ति (Trend) का निर्धारण। सूचकांक संख्याएँ (Index Numbers): सूचकांकों की परिभाषा, निर्माण की समस्याएं और उपयोग; लास्पेयेर, पाशे, और फिशर का आदर्श सूचकांक; सूचकांकों का आधार परिवर्तन (Splicing) और डिफ्लेटिंग (Deflating)। अंतर्वेशन (Interpolation): द्विपद विस्तार (Binomial Expansion) विधि और न्यूटन की विधि। गुणों का साहचर्य (Association of Attributes): यूल का साहचर्य गुणांक।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - IV</div>
+                        <div class="unit-content">प्रारंभिक प्रायिकता सिद्धांत (Elementary Probability Theory): प्रायिकता की परिभाषा, जोड़ और गुणा के नियम। परिकल्पना का परीक्षण (Testing of Hypothesis): सार्थकता के स्तर (Level of Significance) की अवधारणा, स्वतंत्रता की डिग्री (Degree of Freedom), क्रांतिक क्षेत्र (Critical Region), प्रथम प्रकार की त्रुटि (Type I Error) और द्वितीय प्रकार की त्रुटि (Type II Error)। मानक त्रुटि (Standard Error) और छोटे प्रतिदर्शों के लिए टी-टेस्ट (t-test) का अनुप्रयोग।</div>
+                    </div>
+
+                    <div class="paper-title">विकल्प B: आर्थिक विचारों का इतिहास (HISTORY OF ECONOMIC THOUGHT) [Paper Code: UG9101-ECO-64T-203(B)]</div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - I</div>
+                        <div class="unit-content">वाणिज्यवाद (Mercantilism): व्यापार, धन, मूल्य, मजदूरी, ब्याज और रोजगार पर वाणिज्यवादियों के ऐतिहासिक विचार। प्रकृतिवाद (Physiocracy): प्राकृतिक व्यवस्था (Natural Order) की अवधारणा, कृषि की प्रधानता, शुद्ध उत्पाद (Net Product) और धन का चक्रव्यूह (Circulation of Wealth), कराधान का सिद्धांत और राज्य/सरकार की आर्थिक भूमिका। क्लासिकल स्कूल (Classical School): एडम स्मिथ—श्रम विभाजन का सिद्धांत, मूल्य का सिद्धांत, पूंजी संचय और आर्थिक विकास का सिद्धांत, अंतर्राष्ट्रीय व्यापार पर विचार तथा एडम स्मिथ के आर्थिक विचारों की आलोचना।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - II</div>
+                        <div class="unit-content">थॉमस रॉबर्ट माल्थस: जनसंख्या का सिद्धांत और अतिउत्पादन का सिद्धांत (Theory of Gluts)। डेविड रिकार्डो: मूल्य और वितरण का सिद्धांत, अंतर्राष्ट्रीय व्यापार का तुलनात्मक लागत सिद्धांत, आर्थिक विकास का मॉडल और लगान का सिद्धांत (Theory of Rent)। क्लासिकल स्कूल के आलोचक: सिस्मोंडी (Sismondi), रॉबर्ट ओवेन (Robert Owen), और फ्रेडरिक लिस्ट (Friedrich List) के राष्ट्रवादी आर्थिक विचार।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - III</div>
+                        <div class="unit-content">जॉन स्टुअर्ट मिल (J.S. Mill): मूल्य का सिद्धांत, उत्पादन और वितरण पर उनके संशोधित क्लासिकल विचार। काल्पनिक (Utopian) और प्रारंभिक समाजवादी विचारक: लुई ब्लांक, प्रूधों, फूरियर और रॉबर्ट ओवेन। कार्ल मार्क्स (Karl Marx): वैज्ञानिक समाजवाद के प्रयास, धन का सिद्धांत, श्रम मूल्य का सिद्धांत, अतिरिक्त मूल्य का सिद्धांत (Theory of Surplus Value), पूंजी संचय और पूंजीवादी संकट का सिद्धांत, वर्ग संघर्ष और वितरण की व्यवस्था।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - IV</div>
+                        <div class="unit-content">जर्मन ऐतिहासिक संप्रदाय (German Historical School), गणितीय संप्रदाय (Mathematical School) और सीमांतवाद (Marginalism) का उदय एवं विकास। नव-शास्त्रीय संप्रदाय (Neo-classical school): मार्शल के आर्थिक सिद्धांत और कीन्स (Keynes) का वृहद आर्थिक दृष्टिकोण। भारतीय आर्थिक चिंतन (Indian Economic Thought): कौटिल्य का अर्थशास्त्र (राज्य, लोक वित्त और कृषि पर विचार) और महात्मा गांधी के आर्थिक विचार (ट्रस्टीशिप, स्वदेशी, विकेंद्रीकरण और कुटीर उद्योग)।</div>
+                    </div>
+
+                    <div class="practical-box">
+                        <div class="practical-header">अर्थशास्त्र प्रयोगात्मक पाठ्यक्रम (ECO-PRACTICAL-IV)</div>
+                        <div class="unit-row">
+                            <div class="unit-title">भाग A: व्यावहारिक आर्थिक Case Studies</div>
+                            <div class="unit-content">भारत में कृषि सब्सिडी का नीतिगत मूल्यांकन और किसानों पर प्रभाव, वित्तीय समावेशन और माइक्रोफाइनेंस का ग्रामीण समुदायों पर आर्थिक प्रभाव, पर्यावरण संरक्षण बनाम औद्योगिक आर्थिक विकास का द्वंद्व, भारत में स्टार्टअप इंडिया योजना का प्रभाव तथा कोविड-19 महामारी के भारतीय अर्थव्यवस्था पर दीर्घकालिक प्रभाव।</div>
+                        </div>
+                        <div class="unit-row">
+                            <div class="unit-title">भाग B: सांख्यिकीय डेटा संग्रह और प्रस्तुतीकरण</div>
+                            <div class="unit-content">प्राथमिक एवं द्वितीयक डेटा संग्रह के व्यावहारिक साधन (प्रश्नावली, अनुसूची)। हिस्टोग्राम, बहु-दंड आरेख (Bar Charts), पाई चार्ट, लाइन ग्राफ एवं स्कैटर प्लॉट आरेख के माध्यम से वास्तविक आर्थिक समंकों का निरूपण, कंप्यूटर/कैलकुलेटर की सहायता से राजस्व, लागत और उत्पादन वक्रों की गणना और सांख्यिकीय निष्कर्ष निकालना।</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. GEOGRAPHY -->
+            <div class="subject-block block-geo" data-search-keys="geo geography bhugol भूगोल मानव भूगोल प्रैक्टिकल">
+                <div class="subject-header"><b>GEOGRAPHY</b></div>
+                <div class="subject-body">
+                    <div class="paper-title">मुख्य पेपर: मानव भूगोल (HUMAN GEOGRAPHY) [Code: Geo-T]</div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - I</div>
+                        <div class="unit-content">मानव भूगोल की परिभाषा, प्रकृति, उद्देश्य and विषय-क्षेत्र। मानव भूगोल का अन्य सामाजिक विज्ञानों (इतिहास, समाजशास्त्र, अर्थशास्त्र) के साथ अंतर्संबंध। मानव भूगोल के मूलभूत सिद्धांत: क्रियाशीलता का सिद्धांत, पार्थिव एकता या अंतर्संबंध का सिद्धांत, और वातावरण समायोजन का सिद्धांत। जीन ब्रुन्स और एल्सवर्थ हंटिंगटन के अनुसार मानव भूगोल के आवश्यक तथ्य। मानव-पर्यावरण संबंधों की प्रमुख विचारधाराएँ: पर्यावरणीय निश्चयवाद (Determinism), संभववाद (Possibilism) और नव-निश्चयवाद (Neo-Determinism या रुको और जाओ निश्चयवाद)।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - II</div>
+                        <div class="unit-content">मानव प्रजातियाँ: विकास और प्रवास, ज़ोन-स्ट्रैटा सिद्धांत (Zone-Strata Theory)। मानव प्रजातियों के वर्गीकरण के आधार (शारीरिक लक्षण) और उनका वैश्विक वितरण। भारत की प्रजातीय संरचना। विश्व की प्रमुख जनजातियाँ: उनके प्राकृतिक पर्यावरण से समायोजन, आर्थिक और सामाजिक जीवन—एस्किमो, बुशमैन, पिग्मी, मसाई, बद्दू और खिरगीज़। भारत की प्रमुख जनजातियाँ: भील, नागा, संथाल, गोंड, जम्मू-कश्मीर के गुर्जर और नीलगिरि के टोडा।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - III</div>
+                        <div class="unit-content">वैश्विक जनसंख्या वृद्धि: ऐतिहासिक प्रवृत्तियाँ और जनसंख्या वृद्धि के प्रमुख सिद्धांत (माल्थस और जनसांख्यिकीय संक्रमण सिद्धांत)। विश्व में जनसंख्या का वितरण और घनत्व: प्रादेशिक भिन्नताएँ और असमान वितरण के भौगोलिक कारक। जनसंख्या प्रवास: प्रवास के कारण (पुश और पुल फैक्टर्स), प्रकार (अंतर्राष्ट्रीय और आंतरिक) और सामाजिक-आर्थिक प्रभाव। भारत में जनसंख्या प्रदेश और भारत की वर्तमान जनसंख्या नीतियां।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - IV</div>
+                        <div class="unit-content">मानव बस्तियाँ (Human Settlements): ग्रामीण बस्तियों के प्रकार और उनके भौगोलिक प्रतिरूप (Patterns)—रेखीय, आयताकार, वृत्ताकार, तारा प्रतिरूप आदि। ग्रामीण बस्तियों के विकास और अवस्थिति को प्रभावित करने वाले कारक। ग्रामीण गृह निर्माण सामग्री और जलवायु के अनुसार घरों के प्रकार। नगरीय बस्तियाँ: नगरीकरण की प्रक्रिया, विश्व और भारत में नगरीकरण की प्रवृत्तियाँ; भारत में नगरीय समस्याएँ (मलिन बस्तियाँ, प्रदूषण, परिवहन संकट)। पर्यावरण पर मानवीय गतिविधियों का प्रभाव और सतत विकास की संकल्पना।</div>
+                    </div>
+
+                    <div class="practical-box">
+                        <div class="practical-header">भूगोल प्रयोगात्मक पाठ्यक्रम (GEOGRAPHY PRACTICAL-IV)</div>
+                        <div class="unit-row">
+                            <div class="unit-title">इकाई - I: मानचित्र पठन एवं स्थलाकृतिक व्याख्या</div>
+                            <div class="unit-content">मानचित्र पठन के मूलभूत तत्व, भारत में स्थलाकृतिक मानचित्रों (Topographical Maps) का ऐतिहासिक विकास और सर्वेक्षण विभाग (Survey of India) की मानचित्रण योजना (इंदेक्सिंग सिस्टम)। स्थलाकृतिक मानचित्रों पर प्रयुक्त होने वाले पारंपरिक रूढ़ चिह्न (Conventional Symbols) और मानचित्रों पर भौतिक उच्चावच (नदी घाटी, पठार, पहाड़) एवं सांस्कृतिक लक्षणों (बस्तियां, मार्ग) की व्याख्या।</div>
+                        </div>
+                        <div class="unit-row">
+                            <div class="unit-title">इकाई - II: भौगोलिक सांख्यिकीय विधियाँ</div>
+                            <div class="unit-content">केंद्रीय प्रवृत्ति के माप: माध्य (Mean), माध्यिका (Median) और बहुलक (Mode) की भौगोलिक समंकों से गणना। अपकिरण के अंतर्गत मानक विचलन (Standard Deviation) की गणना। दो भौगोलिक चरों के मध्य स्पीयरमैन की श्रेणी सहसंबंध रीति (Rank Correlation) एवं कार्ल पीयरसन का सहसंबंध गुणांक ज्ञात करना।</div>
+                        </div>
+                        <div class="unit-row">
+                            <div class="unit-title">इकाई - III: प्रिज्मेटिक कम्पास भू-सर्वेक्षण</div>
+                            <div class="unit-content">प्रिज्मेटिक कम्पास सर्वेक्षण (Prismatic Compass Survey) के प्रमुख उपकरण, उनकी संरचना और उपयोग। दिक्मान (Bearings) की संकल्पना: अग्र-दिक्मान (Forward Bearing) और पश्च-दिक्मान (Back Bearing), स्थानीय आकर्षण (Local Attraction) की पहचान और दिक्मानों का शुद्धिकरण। प्रिज्मेटिक कम्पास द्वारा प्रतिच्छेदन सर्वेक्षण की विधि (Method of Intersection Survey) का व्यावहारिक क्षेत्र अभ्यास और सर्वे शीट तैयार करना।</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. POLITICAL SCIENCE -->
+            <div class="subject-block block-pol" data-search-keys="pol political politics rajniti राजनीति विज्ञान भारतीय व्यवस्था">
+                <div class="subject-header"><b>POLITICAL SCIENCE</b></div>
+                <div class="subject-body">
+                    <div class="paper-title">मुख्य पेपर: भारतीय राजनीतिक व्यवस्था (INDIAN POLITICAL SYSTEM) [Code: POL-64T 202]</div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - I</div>
+                        <div class="unit-content">भारत में राष्ट्रीय आंदोलन: भारत में राष्ट्रवाद के उदय के कारण, भारतीय राष्ट्रीय कांग्रेस की स्थापना; उदारवादी (नरम दल) और उग्रवादी (गरम दल) विचारधाराएँ, उनकी नीतियां और कार्यक्रम। राष्ट्रीय आंदोलन में महात्मा गांधी की भूमिका और प्रमुख असहयोग, सविनय अवज्ञा तथा भारत छोड़ो आंदोलन। भारत में संवैधानिक विकास: भारत शासन अधिनियम 1919 की मुख्य विशेषताएँ (विशेष रूप से प्रांतों में द्वैध शासन व्यवस्था) और भारत शासन अधिनियम 1935 की मुख्य विशेषताएँ (विशेष रूप से प्रांतीय स्वायत्तता और प्रस्तावित संघीय ढांचा)।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - II</div>
+                        <div class="unit-content">भारतीय संविधान का निर्माण और संविधान सभा की भूमिका। संविधान की प्रस्तावना (Preamble) के मूल आदर्श और दर्शन। भारतीय संघीय व्यवस्था की प्रकृति और प्रवृत्तियाँ। नागरिकों के मौलिक अधिकार (Fundamental Rights), मौलिक कर्तव्य और राज्य नीति के निदेशक तत्त्व (DPSP)। केंद्रीय कार्यपालिका: राष्ट्रपति (शक्तियां, स्थिति और आपातकालीन अधिकार), प्रधानमंत्री और मंत्रिपरिषद। संघीय संसद: लोकसभा और राज्यसभा की संरचना, कार्य और अंतर्संबंध; leader प्रतिपक्ष की भूमिका। न्यायपालिका: उच्चतम न्यायालय (Supreme Court) की संरचना, क्षेत्राधिकार, न्यायिक पुनरावलोकन (Judicial Review) की संकल्पना, जनहित याचिका (PIL) और न्यायिक सक्रियता। संविधान संशोधन की प्रक्रिया (अनुच्छेद 368) और संघ-राज्य संबंध (विधायी, प्रशासनिक और वित्तीय)।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - III</div>
+                        <div class="unit-content">संवैधानिक एवं विधिक संस्थाएं/आयोग: भारत निर्वाचन आयोग (ECI) और चुनाव सुधार, संघ लोक सेवा आयोग (UPSC), और राष्ट्रीय मानवाधिकार आयोग (NHRC) की संरचना और कार्य। राज्यों का शासन: राज्य व्यवस्थापिका (विधानसभा और विधान परिषद), राज्य कार्यपालिका (राज्यपाल की संवैधानिक स्थिति और शक्तियां, मुख्यमंत्री और मंत्रिपरिषद)। कतिपय राज्यों को विशेष दर्जा देने के ऐतिहासिक प्रावधान और उनके प्रभाव। भारत में दलीय व्यवस्था (Party System): राष्ट्रीय और क्षेत्रीय दलों का स्वरूप, गठबंधन की राजनीति और प्रवृत्तियाँ।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - IV</div>
+                        <div class="unit-content">भारतीय राजनीतिक व्यवस्था के सम्मुख प्रमुख चुनौतियाँ: क्षेत्रवाद (Regionalism) और प्रांतीयता, साम्प्रदायिकता (Communalism) के कारण और प्रभाव, नक्सलवाद (Naxalism) और आंतरिक सुरक्षा, साइबर अपराध एवं आतंकवाद की बदलती प्रकृति, राजनीति में जातिवाद (Casteism) की भूमिका, और भ्रष्टाचार। लोकतांत्रिक विकेंद्रीकरण: 73वाँ और 74वाँ संविधान संशोधन अधिनियम, पंचायती राज संस्थाएँ और नगरीय निकाय तथा स्थानीय स्वशासन में महिलाओं की सहभागिता एवं सशक्तिकरण।</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. HINDI LITERATURE -->
+            <div class="subject-block block-hin" data-search-keys="hin hindi literature sahitya हिंदी साहित्य नाटक एकांकी">
+                <div class="subject-header"><b>HINDI LITERATURE</b></div>
+                <div class="subject-body">
+                    <div class="paper-title">मुख्य पेपर: नाटक एवं एकांकी</div>
+                    <div class="unit-row">
+                        <div class="unit-title">प्रथम इकाई: नाट्य विधा का सैद्धांतिक इतिहास</div>
+                        <div class="unit-content">
+                            (i) हिन्दी नाटक का उद्भव और ऐतिहासिक विकास के प्रमुख चरण (भारतेन्दु युग, प्रसाद युग, प्रसादोत्तर युग और समकालीन नाटक)।<br>
+                            (ii) नाट्य शिल्प के तत्व और हिन्दी नाटक का स्वरूप व शास्त्रीय अवधारणा।<br>
+                            (iii) हिन्दी एकांकी का उद्भव और विकास तथा एकांकी विधा का स्वरूप एवं नाटक व एकांकी का अंतर।<br>
+                            (iv) हिन्दी के प्रमुख युगांतकारी नाटककार (जयशंकर प्रसाद, भारतेंदु, मोहन राकेश आदि) एवं प्रमुख एकांकीकार (डॉ. रामकुमार वर्मा, भुवनेश्वर आदि) का परिचय और उनका अवदान।
+                        </div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">द्वितीय इकाई: विस्तृत नाटक पाठ (शंकर शेष)</div>
+                        <div class="unit-content">शंकर शेष द्वारा रचित विख्यात नाटक **'एक और द्रोणाचार्य'** (किताब घर प्रकाशन, नई दिल्ली)—पाठ्यक्रम में निर्धारित इस नाटक से सप्रसंग व्याख्या, नाटक के प्रमुख पात्रों (अरविंद, द्रोणाचार्य, विमलेन्दु, कृपी, अश्वत्थामा, अनुराधा) का चरित्र-चित्रण, नाटक की मूल संवेदना, युगीन विसंगतियों पर आक्षेप, रंगमंचीयता और नाट्य शिल्प पर आधारित आलोचनात्मक प्रश्न।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">तृतीय इकाई: निर्धारित एकांकी (भाग A)</div>
+                        <div class="unit-content">
+                            निर्धारित एकांकियों का गहन अध्ययन, सप्रसंग व्याख्या एवं आलोचनात्मक विश्लेषण:<br>
+                            1. **पृथ्वीराज की आँखें** — लेखक: डॉ० रामकुमार वर्मा (ऐतिहासिक संवेदना और राष्ट्रप्रेम)<br>
+                            2. **ऊसर** — लेखक: भुवनेश्वर (मध्यवर्गीय विसंगति और आधुनिकता बोध)<br>
+                            3. **सूखी डाली** — लेखक: उपेन्द्रनाथ अश्क (पारिवारिक विघटन, संयुक्त परिवार की मर्यादा और मनोवैज्ञानिक द्वंद्व)<br>
+                            4. **रीढ़ की हड्डी** — लेखक: जगदीश चन्द्र माथुर (सामाजिक रूढ़ियों पर प्रहार, स्त्री शिक्षा और मध्यवर्गीय संकीर्णता)
+                        </div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">चतुर्थ इकाई: निर्धारित एकांकी (भाग B)</div>
+                        <div class="unit-content">
+                            निर्धारित एकांकियों का गहन अध्ययन, सप्रसंग व्याख्या एवं आलोचनात्मक विश्लेषण:<br>
+                            5. **नए मेहमान** — लेखक: उदय शंकर भट्ट (शहरी जीवन की आवासीय समस्या और अतिथि सत्कार का द्वंद्व)<br>
+                            6. **अंडे के छिलके** — लेखक: मोहन राकेश (पारिवारिक पर्दा, आधुनिक पीढ़ी की जीवनशैली और छिपी हुई आदतें)<br>
+                            7. **बसंत ऋतु का नाटक** — लेखक: लक्ष्मी नारायण लाल (मंचन शिल्प और आधुनिक प्रतीकात्मकता)<br>
+                            8. **हरितगन्धा** — लेखक: हमीदुल्ला (पर्यावरण चेतना और आधुनिक विसंगति बोध)<br>
+                            *आन्तरिक मूल्यांकन हेतु निर्धारित नाटककार, नाटकों के उद्भव और एकांकी की मूल संवेदना पर निबंधात्मक लेखन।
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. SANSKRIT -->
+            <div class="subject-block block-san" data-search-keys="san sanskrit sanskritam संस्कृत वैदिक साहित्य व्याकरण रूपसिद्धि">
+                <div class="subject-header"><b>SANSKRIT</b></div>
+                <div class="subject-body">
+                    <div class="paper-title">मुख्य पेपर: वैदिक साहित्य, गद्य साहित्य एवं व्याकरण [Code: Sans]</div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - I: वैदिक साहित्य सूक्त पाठ एवं उपनिषद्</div>
+                        <div class="unit-content">
+                            (i) ऋग्वेद संहिता के निम्नलिखित सूक्तों के मंत्रों का सप्रसंग पाठ, हिंदी अनुवाद, सायण भाष्य के अनुसार व्याख्या, देवताओं का स्वरूप, चरित्र-चित्रण एवं व्याकरणात्मक टिप्पणी:<br>
+                            * **अग्निसूक्त** (ऋग्वेद 1/1) — पुरोहित अग्नि का स्वरूप और स्तुति।<br>
+                            * **वरूणसूक्त** (ऋग्वेद 1/25) — पाशमुक्ति, नैतिक नियमों के अधिपति वरुण देव का स्वरूप।<br>
+                            * **इन्द्रसूक्त** (ऋग्वेद 2/12) — वज्रबाहु, वृत्रहन्ता इंद्र देव के पराक्रम का वर्णन।<br>
+                            * **क्षेत्रपतिसूक्त** (ऋग्वेद 4/57) — कृषि देव और भूमि समृद्धि की प्रार्थना।<br>
+                            * **विश्वेदेवासूक्त** (ऋग्वेद 8/58) — समस्त देवताओं की सामूहिक स्तुति।<br>
+                            * **प्रजापतिसूक्त** (ऋग्वेद 10/121) — हिरण्यगर्भ और सृष्टि के विधाता का स्वरूप।<br>
+                            * **संज्ञानसूक्त** (ऋग्वेद 10/191) — सामाजिक एकता, सामंजस्य और समान विचार की प्रार्थना।<br>
+                            (ii) **ईशावास्योपनिषद्** — यजुर्वेद के 40वें अध्याय के अंतर्गत शांतिमंत्र सहित सभी 18 मंत्रों का सप्रसंग संस्कृत एवं हिंदी में व्याख्या, ज्ञानमार्ग, कर्ममार्ग, विद्या-अविद्या, और आत्मतत्त्व का दार्शनिक विवेचन।
+                        </div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - II: संस्कृत गद्य साहित्य (बाणभट्ट)</div>
+                        <div class="unit-content">महाकवि बाणभट्ट विरचित कादम्बरी के अंतर्गत **'शुकनासोपदेश'** का संपूर्ण अध्ययन। गद्यांशों का सप्रसंग हिंदी अनुवाद, गद्य शैली, शुकनास द्वारा राजकुमार चंद्रापीड को दिया गया उपदेश, युवावस्था जन्य अज्ञानता, राजमद, लक्ष्मी की उत्पत्ति, चंचलता और दोष, दुष्ट राजाओं की प्रवृत्तियाँ, गुरुपदेश का महत्व एवं संपूर्ण गद्यांश की साहित्यिक एवं नैतिक समीक्षा। इस इकाई से कुछ लघुत्तरात्मक प्रश्न संस्कृत माध्यम से पूछे जाएंगे।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - III: वैदिक साहित्य का इतिहास</div>
+                        <div class="unit-content">
+                            (i) **वैदिक संहिताएँ**: ऋग्वेद, यजुर्वेद, सामवेद, और अथर्ववेद का परिचय, उनकी शाखाएँ, स्वरूप, रचनाकाल के विषय में विद्वानों के मत, विषयवस्तु और सांस्कृतिक महत्व।<br>
+                            (ii) **ब्राह्मण साहित्य**: ब्राह्मण ग्रंथों का स्वरूप, विधि और प्रतिपाद्य विषय; ऐतरेय ब्राह्मण, शतपथ ब्राह्मण, छान्दोग्य ब्राह्मण, तथा गोपथ ब्राह्मण का विस्तृत ऐतिहासिक परिचय एवं महत्व।<br>
+                            (iii) **वेदाङ्ग साहित्य**: छह वेदाङ्गों का परिचय—शिक्षा (घ्राण), कल्प (हस्त), व्याकरण (मुख), निरुक्त (श्रोत्र), छंद (पाद) और ज्योतिष (चक्षु) का स्वरूप, ग्रंथ, विषयवस्तु और वेद-रक्षण में महत्व।
+                        </div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - IV: पाणीनीय व्याकरण (लघुसिद्धान्तकौमुदी)</div>
+                        <div class="unit-content">
+                            वरदराजाचार्य रचित लघुसिद्धान्तकौमुदी के अनुसार निम्नलिखित प्रकरणों के पदों की सूत्रनिर्देशपूर्वक रूपसिद्धि और सूत्रों की सोदाहरण व्याख्या:<br>
+                            (i) **अजन्तप्रकरण (सुबन्त)**: राम, सर्व, हरि, गुरू, रमा, मति, नदी एवं ज्ञान शब्दों की विभिन्न विभक्तियों के रूपों की सूत्र व्याख्या सहित सिद्धि।<br>
+                            (ii) **हलन्तप्रकरण**: राजन्, भवत्, विद्वस्, युष्मद्, अस्मद् तथा चतुर शब्दों की पद रूपसिद्धि, विभक्ति प्रत्यय, प्रातिपदिक संज्ञा एवं प्रयुक्त व्याकरण सूत्रों का सोदाहरण अनुप्रयोग।
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. HISTORY -->
+            <div class="subject-block block-his" data-search-keys="his history itihas इतिहास सांस्कृतिक कला संस्कृति दर्शन">
+                <div class="subject-header"><b>HISTORY</b></div>
+                <div class="subject-body">
+                    <div class="paper-title">मुख्य पेपर: भारत के सांस्कृतिक इतिहास की मुख्य प्रवृत्तियाँ (MAIN TRENDS IN THE CULTURAL HISTORY OF INDIA) [Code: HIS-64T-202]</div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - I: धर्म और संस्कृति</div>
+                        <div class="unit-content">संस्कृति की परिभाषा, संकल्पना, मूल तत्व और भारतीय संस्कृति की प्रमुख विशेषताएँ। धर्म और संस्कृति का अंतर्संबंध: वैदिक धर्म की मुख्य प्रवृत्तियाँ (ऋग्वैदिक और उत्तर वैदिक धर्म), बौद्ध धर्म और जैन धर्म का उद्भव, उनकी शिक्षाएँ, दर्शन, समाज को योगदान और वैश्विक विस्तार। पौराणिक हिंदू धर्म का विकास: वैष्णव धर्म (Vaishnavism) और शैव धर्म (Saivism) के सिद्धांत और इतिहास; मध्यकाल में भारत में भक्ति आंदोलन (प्रमुख संत, विचारधारा और सामाजिक प्रभाव), सूफीवाद (Sufism) का आगमन, उनके प्रमुख सिलसिले (चिश्ती, सुहरावर्दी) और भारत में सांस्कृतिक संश्लेषण में उनका योगदान।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - II: दर्शन और साहित्य</div>
+                        <div class="unit-content">दर्शन और संस्कृति: उपनिषदों का अद्वैत चिंतन, आत्मा और ब्रह्म की संकल्पना। श्रीमद्भगवद्गीता का निष्काम कर्मयोग, ज्ञानयोग और भक्तियोग तथा आधुनिक समाज में उसकी प्रासंगिकता। प्राचीन महाकाव्य और संस्कृति: रामायण और महाभारत की ऐतिहासिकता, समाज, राजनीति और मूल्यों के निर्माण में उनकी भूमिका। पुराण साहित्य का सांस्कृतिक और ऐतिहासिक महत्व। संस्कृत और हिंदी साहित्य का सांस्कृतिक योगदान: महाकवि कालिदास की साहित्यिक कृतियाँ, गोस्वामी तुलसीदास का रामचरितमानस और मध्यकालीन समाज, तथा आधुनिक युग में रवींद्रनाथ टैगोर का साहित्य, राष्ट्रवाद और सांस्कृतिक चिंतन।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - III: सामाजिक संस्थाएँ और स्थापत्य कला</div>
+                        <div class="unit-content">प्राचीन भारत की सामाजिक संस्थाएँ और सामाजिक आदर्श: वर्ण व्यवस्था का मूल स्वरूप और उसका पतन, आश्रम व्यवस्था (चारों आश्रमों का महत्व), हिंदू संस्कार (सोलह संस्कारों का सांस्कृतिक आधार) और पुरुषार्थ की संकल्पना (धर्म, अर्थ, काम, मोक्ष)। भारतीय कला और स्थापत्य संस्कृति: भारतीय कला की मूलभूत विशेषताएँ और अंतर्निहित दर्शन। मंदिर वास्तुकला की प्रमुख शैलियाँ: नागर, द्रविड़ और वेसर शैली। भारत के प्रमुख मंदिरों का ऐतिहासिक एवं स्थापत्य कलात्मक अध्ययन: आबू (दिलवाड़ा के जैन मंदिर), खजुराहो के मंदिर समूह, उड़ीसा के मंदिर (कोणार्क का सूर्य मंदिर, भुवनेश्वर), तथा दक्षिण भारत के पल्लव (रथ मंदिर) और चोल वास्तुकला (तंजौर का बृहदेश्वर मंदिर) की मुख्य विशेषताएँ।</div>
+                    </div>
+                    <div class="unit-row">
+                        <div class="unit-title">इकाई - IV: चित्रकला, विज्ञान और संस्कृति</div>
+                        <div class="unit-content">भारतीय चित्रकला का ऐतिहासिक विकास: प्रागैतिहासिक शैल चित्रकला (Rock Paintings—भीमबेटका), शास्त्रीय चित्रकला के अंतर्गत अजंता की गुफा चित्रकला (शिल्प, रंग योजना और विषयवस्तु), तथा मध्यकाल में मुगल चित्रकला शैली (उत्पत्ति, विकास, प्रमुख चित्रकार और विशेषताएँ)। प्राचीन भारत में विज्ञान, प्रौद्योगिकी और संस्कृति का विकास: गणित और खगोल विज्ञान में आर्यभट्ट व वराहमिहिर का योगदान; प्राचीन भारतीय चिकित्सा पद्धति और आयुर्वेद के क्षेत्र में महर्षि चरक (चरक संहिता) और सुश्रुत (सुश्रुत संहिता और शल्य चिकित्सा) का ऐतिहासिक अवदान।</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="emptySearchNotice" class="no-results hidden" style="background:#fff; padding:30px; text-align:center; border:1px solid #d1d5db; border-radius:8px;">
+            ❌ कोई विषय नहीं मिला! कृपया सही सब्जेक्ट कोड या नाम डालें।
+        </div>
+
+    </div>
+
+    <!-- Floating Actions Group -->
+    <div class="float-actions">
+        <!-- Securely Dynamically Parsed Encoded WhatsApp Button with explicit Javascript resolution to avoid encoding text bugs -->
+        <button onclick="redirectToWhatsApp()" class="btn-float whatsapp-personal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-93.8-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+        </button>
+        <!-- Back to Top Arrow -->
+        <button id="scrollToTopBtn" class="btn-float back-to-top" onclick="scrollToTop()">↑</button>
+    </div>
+
+    <footer class="mystic-footer">
+        <div class="mystic-text">
+            मेरी गहराई नापने की कोशिश न करें, डूब सकते हैं। मैं कौन हूँ और कहाँ से हूँ—ये सवाल आपके लिए हानिकारक हो सकते हैं। बेहतर है कि आप मुझे एक पहेली ही रहने दें।
+        </div>
+    </footer>
+
+    <script>
+        function closeModal() {
+            document.getElementById('groupModal').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('groupModal').style.display = 'none';
+            }, 300);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeBtn');
+            body.classList.toggle('dark-theme');
+            if(body.classList.contains('dark-theme')) {
+                btn.textContent = "☀️ लाइट मोड";
+            } else {
+                btn.textContent = "🌙 डार्क मोड";
+            }
+        }
+
+        // Safe explicit implementation for text formatting
+        function redirectToWhatsApp() {
+            const targetMessage = "पहेली को सुलझाने का मन हुआ तो सीधे यहाँ चला आया। चतुर्थ सेमेस्टर के इस शानदार पोर्टल को बनाने वाले मास्टरमाइंड से जुड़कर अच्छा लगा।";
+            const encodedText = encodeURIComponent(targetMessage);
+            const apiEndpoint = "https://api.whatsapp.com/send?phone=237621304226&text=" + encodedText;
+            window.open(apiEndpoint, '_blank');
+        }
+
+        function clearSearchInput() {
+            const input = document.getElementById('globalSearch');
+            input.value = '';
+            document.getElementById('clearBtn').style.display = 'none';
+            blocks.forEach(b => b.classList.remove('hidden'));
+            emptyNotice.classList.add('hidden'); // classList target bug fixed
+        }
+
+        window.onscroll = function() {
+            const topBtn = document.getElementById('scrollToTopBtn');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "flex";
+            } else {
+                topBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        const mainInput = document.getElementById('globalSearch');
+        const listContainer = document.getElementById('rootSubjectContainer');
+        const blocks = Array.from(document.querySelectorAll('.subject-block'));
+        const emptyNotice = document.getElementById('emptySearchNotice');
+        const clearBtn = document.getElementById('clearBtn');
+
+        mainInput.addEventListener('input', function(e) {
+            const rawVal = e.target.value.toLowerCase().trim();
+
+            if (rawVal.length > 0) {
+                clearBtn.style.display = 'block';
+            } else {
+                clearBtn.style.display = 'none';
+            }
+
+            if (rawVal.length < 3) {
+                blocks.forEach(b => b.classList.remove('hidden'));
+                emptyNotice.classList.add('hidden'); // classList target bug fixed
+                return;
+            }
+
+            let found = 0;
+            let prioritize = [];
+
+            blocks.forEach(b => {
+                const headerText = b.querySelector('.subject-header b').textContent.toLowerCase();
+                const keywords = b.getAttribute('data-search-keys').toLowerCase();
+
+                if (headerText.includes(rawVal) || keywords.includes(rawVal)) {
+                    b.classList.remove('hidden');
+                    found++;
+                    if (headerText.includes(rawVal)) {
+                        prioritize.unshift(b);
+                    } else {
+                        prioritize.push(b);
+                    }
+                } else {
+                    b.classList.add('hidden');
+                }
+            });
+
+            prioritize.forEach(el => listContainer.appendChild(el));
+            
+            if (found === 0) {
+                emptyNotice.classList.remove('hidden');
+            } else {
+                emptyNotice.classList.add('hidden'); // classList target bug fixed
+            }
+        });
+    </script>
+</body>
+</html>
